@@ -76,7 +76,15 @@ LLM_MODEL = "llama-3.3-70b-versatile"
 # Read the Groq API key from an environment variable.
 # Students: set this in your shell before running the app:
 #   export GROQ_API_KEY="your_key_here"
+import streamlit as st
+
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
+
+if not GROQ_API_KEY:
+    try:
+        GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
+    except Exception:
+        GROQ_API_KEY = ""
 
 # Maximum tokens the LLM may generate in a single response
 LLM_MAX_TOKENS = 1024
