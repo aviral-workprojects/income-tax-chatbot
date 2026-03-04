@@ -159,39 +159,6 @@ Hybrid Retrieval
 
 ---
 
-## Deploying to Streamlit Cloud
-
-> **Important:** Streamlit Cloud free tier has ~1 GB RAM. Loading the sentence-transformer model plus a ChromaDB index for an 800-page PDF will likely exceed this limit. For a working cloud deployment, use Hugging Face Spaces (with a persistent storage addon) or a small cloud VM (AWS EC2 t3.medium or equivalent).
-
-If you want to try Streamlit Cloud regardless:
-
-1. Push this repository to GitHub. Use the `.gitignore` below — do not commit the PDF or `chroma_db/`.
-2. Add `GROQ_API_KEY` as a secret in the Streamlit Cloud dashboard under **Settings > Secrets**.
-3. For the PDF: host it at a public URL and fetch it programmatically at startup instead of committing the binary to git.
-4. Be aware the cold-start index build may time out on free tier.
-
----
-
-## Recommended .gitignore
-
-```
-# Python
-__pycache__/
-*.pyc
-venv/
-.env
-
-# Large generated files -- do not commit
-data/
-chroma_db/
-
-# OS
-.DS_Store
-Thumbs.db
-```
-
----
-
 ## Example Questions
 
 - What deductions are available under Section 80C?
